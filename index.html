@@ -17,6 +17,7 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
+            position: relative;
         }
         h1 {
             font-size: 3em;
@@ -25,11 +26,39 @@
         }
         p {
             font-size: 1.5em;
-            margin: 0 20px;
+            margin: 10px 20px;
         }
         @keyframes bounce {
             from { transform: translateY(0px); }
             to { transform: translateY(10px); }
+        }
+        #balloon {
+            width: 80px;
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            cursor: pointer;
+            transition: transform 0.2s ease-out;
+        }
+        #balloon.pop {
+            transform: scale(1.2);
+            opacity: 0;
+        }
+        #gift-box {
+            width: 100px;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+        }
+        #gift-box.open {
+            transform: scale(1.2);
+        }
+        #message {
+            display: none;
+            font-size: 1.5em;
+            color: yellow;
+            margin-top: 10px;
         }
         #confetti-canvas {
             position: fixed;
@@ -44,8 +73,16 @@
 <body>
 
     <h1>🎂 Happy Birthday, Francine! 🎉</h1>
-    <p>Wishing you a day filled with love and laughter. More birthdays to come and candles to blow! 🥳</p>
+    <p>Happy Birthday siopaooo~ 🥳🎂 On this special day, I just want you to know how much you mean to me. Your kindness and unwavering support light up my life(sheeeshhh). I’m so grateful for all the memories we’ve shared and can’t wait to make even more unforgettable moments in the year ahead. May this year bring you endless joy, love, and all your heart desires. You deserve the world! More Birthdays to come and candles to blow! Love you tons❤️ mwaahh! HAHAHAHAHAHAHA</p>
     
+    <!-- Interactive Balloon -->
+    <img id="balloon" src="https://cdn-icons-png.flaticon.com/512/3461/3461760.png" alt="Balloon" onclick="popBalloon()">
+
+    <!-- Interactive Gift Box -->
+    <img id="gift-box" src="https://cdn-icons-png.flaticon.com/512/1071/1071690.png" alt="Gift Box" onclick="openGift()">
+    
+    <p id="message">🎁 Surprise! You're an amazing friend! Wishing you all the happiness in the world! 🎉</p>
+
     <!-- Background Confetti Effect -->
     <canvas id="confetti-canvas"></canvas>
 
@@ -64,6 +101,21 @@
             };
             document.addEventListener("click", playAudio);
         });
+
+        // Pop Balloon Effect
+        function popBalloon() {
+            let balloon = document.getElementById("balloon");
+            balloon.classList.add("pop");
+            setTimeout(() => balloon.style.display = "none", 500);
+        }
+
+        // Open Gift Box Effect
+        function openGift() {
+            let giftBox = document.getElementById("gift-box");
+            let message = document.getElementById("message");
+            giftBox.classList.add("open");
+            message.style.display = "block";
+        }
 
         // Confetti Effect
         const canvas = document.getElementById("confetti-canvas");
