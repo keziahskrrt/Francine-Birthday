@@ -113,46 +113,4 @@
 
         // Open Gift Box Effect
         function openGift() {
-            let giftBox = document.getElementById("gift-box");
-            let message = document.getElementById("message");
-            giftBox.classList.add("open");
-            message.style.display = "block";
-        }
-
-        // Confetti Effect
-        const canvas = document.getElementById("confetti-canvas");
-        const ctx = canvas.getContext("2d");
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        const confettiParticles = [];
-        for (let i = 0; i < 100; i++) {
-            confettiParticles.push({
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height - canvas.height,
-                size: Math.random() * 10 + 5,
-                color: `hsl(${Math.random() * 360}, 100%, 70%)`,
-                speed: Math.random() * 3 + 1
-            });
-        }
-
-        function drawConfetti() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            confettiParticles.forEach(p => {
-                ctx.fillStyle = p.color;
-                ctx.fillRect(p.x, p.y, p.size, p.size);
-                p.y += p.speed;
-                if (p.y > canvas.height) p.y = -10;
-            });
-            requestAnimationFrame(drawConfetti);
-        }
-        drawConfetti();
-
-        // Adjust canvas size on resize
-        window.addEventListener("resize", function () {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
-    </script>
-</body>
-</html>
+            let
